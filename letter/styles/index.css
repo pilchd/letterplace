@@ -1,0 +1,120 @@
+:root {
+    --color-blue-light: #D8DCFF;
+    --color-blue-dark:  #AEADF0;
+    --color-red-light:  #C38D94;
+    --color-red-dark:   #A76571;
+    --color-bg:         #565676;
+}
+body {
+    width: 100%;
+    height: 100vh;
+
+    padding: 0;
+    margin: 0;
+
+    font-family: "Noto Sans", sans-serif;
+
+    background: var(--color-bg);
+}
+h1 {
+    margin: 0;
+}
+
+.main {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 32px;
+
+    animation-duration: 2s;
+    animation-delay: .25s;
+    animation-fill-mode: backwards;
+}
+.cont-title .letter {
+    color: var(--color-blue-dark);
+
+    animation-name: slide-right, color-letter;
+    animation-duration: inherit;
+    animation-delay: inherit;
+    animation-fill-mode: inherit;
+}
+.cont-title .place {
+    color: var(--color-red-light);
+
+    animation-name: slide-left, color-place;
+    animation-duration: inherit;
+    animation-delay: inherit;
+    animation-fill-mode: inherit;
+}
+@keyframes slide-left {
+    from {
+        padding-left: 64px;
+    }
+    to {
+        padding-right: 0;
+    }
+}
+@keyframes slide-right {
+    from {
+        padding-right: 64px;
+    }
+    to {
+        padding-right: 0;
+    }
+}
+@keyframes color-letter {
+    from {
+        color: var(--color-bg);
+    }
+    to {
+        color: var(--color-blue-dark);
+    }
+}
+@keyframes color-place {
+    from {
+        color: var(--color-bg);
+    }
+    to {
+        color: var(--color-red-light);
+    }
+}
+
+.login a {
+    margin-top: 48px;
+
+    font-size: 32px;
+    text-decoration: none;
+
+    color: var(--color-blue-light);
+
+    animation: color-login;
+    animation-duration: 1.25s;
+    animation-delay: .75s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: backwards;
+
+    transition: all .5s;
+}
+.login a:hover {
+    color: var(--color-blue-dark);
+}
+@keyframes color-login {
+    from {
+        color: var(--color-bg);
+    }
+    to {
+        color: var(--color-blue-light);
+    }
+}
