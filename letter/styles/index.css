@@ -4,11 +4,15 @@
     --color-red-light:  #C38D94;
     --color-red-dark:   #A76571;
     --color-bg:         #565676;
+
+    --anim-dur-fouc:   .25s;
+    --anim-dur-intro:  2s;
+    --anim-dur-rotate: .5s;
+    --anim-dur-expand: 2s;
 }
 body {
     width: 100%;
     height: 100vh;
-
     padding: 0;
     margin: 0;
 
@@ -16,11 +20,12 @@ body {
 
     background: var(--color-bg);
 }
-h1 {
+h1, p, input {
+    padding: 0;
     margin: 0;
 }
 
-.main {
+#main {
     height: 100vh;
 
     display: flex;
@@ -29,20 +34,21 @@ h1 {
     align-items: center;
 }
 
-.cont-title {
+#cont-title {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    cursor: default;
 
     font-family: 'Noto Sans', sans-serif;
     font-size: 32px;
 
-    animation-duration: 2s;
-    animation-delay: .25s;
+    animation-duration: var(--anim-dur-intro);
+    animation-delay: var(--anim-dur-fouc);
     animation-fill-mode: backwards;
 }
-.cont-title .letter {
+#letter {
     color: var(--color-blue-dark);
 
     animation-name: slide-right, color-letter;
@@ -50,7 +56,7 @@ h1 {
     animation-delay: inherit;
     animation-fill-mode: inherit;
 }
-.cont-title .place {
+#place {
     color: var(--color-red-light);
 
     animation-name: slide-left, color-place;
@@ -59,62 +65,102 @@ h1 {
     animation-fill-mode: inherit;
 }
 @keyframes slide-left {
-    from {
-        padding-left: 64px;
-    }
-    to {
-        padding-right: 0;
-    }
+    from {padding-left: 64px;}
+    to {padding-right: 0;}
 }
 @keyframes slide-right {
-    from {
-        padding-right: 64px;
-    }
-    to {
-        padding-right: 0;
-    }
+    from {padding-right: 64px;}
+    to {padding-right: 0;}
 }
 @keyframes color-letter {
-    from {
-        color: var(--color-bg);
-    }
-    to {
-        color: var(--color-blue-dark);
-    }
+    from {color: var(--color-bg);}
+    to {color: var(--color-blue-dark);}
 }
 @keyframes color-place {
-    from {
-        color: var(--color-bg);
-    }
-    to {
-        color: var(--color-red-light);
-    }
+    from {color: var(--color-bg);}
+    to {color: var(--color-red-light);}
 }
 
-.login a {
-    margin-top: 48px;
+#expand {
+    margin-top: 0;
 
     font-size: 32px;
-    text-decoration: none;
 
     color: var(--color-blue-light);
+    cursor: pointer;
 
     animation: color-login;
-    animation-duration: 1.25s;
-    animation-delay: .75s;
+    animation-duration: calc(var(--anim-dur-intro) / 2);
+    animation-delay: calc(var(--anim-dur-fouc) * 3);
     animation-timing-function: ease-in;
     animation-fill-mode: backwards;
 
-    transition: all .5s;
+    transition-property: color, transform;
+    transition-duration: var(--anim-dur-rotate);
 }
-.login a:hover {
+#expand span:hover {
     color: var(--color-blue-dark);
+    cursor: pointer;
+}
+#expand.expanded {
+    transform: rotate(0.5turn);
 }
 @keyframes color-login {
-    from {
-        color: var(--color-bg);
-    }
-    to {
-        color: var(--color-blue-light);
-    }
+    from {color: var(--color-bg);}
+    to {color: var(--color-blue-light);}
+}
+
+#cont-cred {
+    max-height: 0;
+    visibility: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    /* Visibility alternation handled in index.js */
+    transition: max-height, opacity, padding;
+    transition-duration: var(--anim-dur-expand);
+}
+#cont-cred.expanded {
+    max-height: 180px;
+    padding: 16px;
+
+    opacity: 100;
+}
+
+#cont-cred label {
+    margin-top: 16px;
+
+    align-self: end;
+
+    font-size: 24px;
+
+    color: var(--color-blue-light);
+}
+#cont-cred input {
+    width: 200px;
+    border: none;
+    border-bottom: 2px solid var(--color-blue-dark);
+
+    font-size: 16px;
+
+    outline: none;
+    color: var(--color-blue-light);
+    background-color: var(--color-bg);
+}
+#actions {
+    align-self: start;
+
+    cursor: default;
+}
+#cont-cred input[type="button"] {
+    width: fit-content;
+    border: none;
+
+    color: var(--color-red-light);
+    cursor: pointer;
 }

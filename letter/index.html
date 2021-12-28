@@ -13,23 +13,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap">
 
+    <script type="text/javascript" src="scripts/index.js" defer></script>
+
     <title>letterplace</title>
 </head>
 
 <body>
-    <div class="main">
-        <div class="cont-title">
-            <span class="letter">
+    <div id="main">
+        <div id="cont-title">
+            <span id="letter">
                 <h1>letter</h1>
             </span>
-            <span class="place">
+            <span id="place">
                 <h1>place</h1>
             </span>
         </div>
 
-        <div class="login">
-            <a href="./login.html">login</a>
+        <div id="cont-cred">
+            <label for="user_email">email</label>
+            <input id="user_email" name="user_email" type="email">
+
+            <label for="user_password">password</label>
+            <input id="user_password" name="user_password" type="password">
+
+            <div id="actions">
+                <input id="login" value="login" type="button">
+                <input id="register" value="register" type="button">
+            </div>
         </div>
+
+        <p id="expand">&or;</p>
     </div>
 </body>
 
