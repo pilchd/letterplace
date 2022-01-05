@@ -1,3 +1,18 @@
+import {initializeApp} from 'firebase/app'
+import {} from 'firebase/auth'
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBGPNeaqxtsU-TZiYlLRVqlIus_Fk9Qbhw",
+  authDomain: "letter-place.firebaseapp.com",
+  projectId: "letter-place",
+  storageBucket: "letter-place.appspot.com",
+  messagingSenderId: "347140223350",
+  appId: "1:347140223350:web:a043329534fdca6da44a57"
+};
+const app = initializeApp(firebaseConfig);
+
+
 document.getElementById("expand").addEventListener("click", () => {
 
     if (!document.getElementById("expand").classList.contains("expanded")) {
