@@ -19,30 +19,58 @@
 </head>
 
 <body>
-    <div id="main">
-        <div id="cont-title">
-            <span id="letter">
+    <div id="login">
+
+        <div id="login_cont_title">
+            <span id="login_letter">
                 <h1>letter</h1>
             </span>
-            <span id="place">
+            <span id="login_place">
                 <h1>place</h1>
             </span>
         </div>
 
-        <div id="cont-cred">
-            <label for="user_email">email</label>
-            <input id="user_email" name="user_email" type="email">
+        <div id="login_cont_cred">
 
-            <label for="user_password">password</label>
-            <input id="user_password" name="user_password" type="password">
+            <div id="login_cont_login">
 
-            <div id="actions">
-                <input id="login" value="login" type="button">
-                <input id="register" value="register" type="button">
+                <label for="login_email">email</label>
+                <input id="login_email" class="cred" name="login_email" type="email">
+
+                <label for="login_password">password</label>
+                <input id="login_password" class="cred" name="login_password" type="password">
+
+                <div class="login_cont_actions">
+                    <input id="login_login" value="login" type="button">
+                    <input id="login_expand-register" value="register..." type="button">
+                </div>
+
             </div>
+
+            <div id="login_cont_register">
+
+                <label for="login_password-conf">confirm</label>
+                <input id="login_password-conf" class="cred" name="login_password-conf" type="password">
+
+                <label for="login_fname">first name</label>
+                <input id="login_fname" class="cred" name="login_fname" type="text">
+
+                <label for="login_lname">last name</label>
+                <input id="login_lname" class="cred" name="login_lname" type="text">
+
+                <label for="login_addr">address</label>
+                <input id="login_addr" class="cred" name="login_addr" type="text" placeholder="your unique letterplace username">
+
+                <div class="login_cont_actions">
+                    <input id="login_register" value="register" type="button">
+                </div>
+
+            </div>
+
         </div>
 
-        <p id="expand">&or;</p>
+        <p id="login_expand">&or;</p>
+
     </div>
 </body>
 

@@ -25,7 +25,10 @@ h1, p, input {
     margin: 0;
 }
 
-#main {
+#login {
+    display: none;
+}
+#login.active {
     height: 100vh;
 
     display: flex;
@@ -34,7 +37,7 @@ h1, p, input {
     align-items: center;
 }
 
-#cont-title {
+#login_cont_title {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -48,7 +51,7 @@ h1, p, input {
     animation-delay: var(--anim-dur-fouc);
     animation-fill-mode: backwards;
 }
-#letter {
+#login_letter {
     color: var(--color-blue-dark);
 
     animation-name: slide-right, color-letter;
@@ -56,7 +59,7 @@ h1, p, input {
     animation-delay: inherit;
     animation-fill-mode: inherit;
 }
-#place {
+#login_place {
     color: var(--color-red-light);
 
     animation-name: slide-left, color-place;
@@ -81,8 +84,8 @@ h1, p, input {
     to {color: var(--color-red-light);}
 }
 
-#expand {
-    margin-top: 0;
+#login_expand {
+    margin-top: 16px;
 
     font-size: 32px;
 
@@ -98,11 +101,10 @@ h1, p, input {
     transition-property: color, transform;
     transition-duration: var(--anim-dur-rotate);
 }
-#expand span:hover {
+#login_expand:hover {
     color: var(--color-blue-dark);
-    cursor: pointer;
 }
-#expand.expanded {
+#login_expand.expand {
     transform: rotate(0.5turn);
 }
 @keyframes color-login {
@@ -110,29 +112,13 @@ h1, p, input {
     to {color: var(--color-blue-light);}
 }
 
-#cont-cred {
-    max-height: 0;
-    visibility: hidden;
-
+#login_cont_cred {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    opacity: 0;
-
-    /* Visibility alternation handled in index.js */
-    transition: max-height, opacity, padding;
-    transition-duration: var(--anim-dur-expand);
 }
-#cont-cred.expanded {
-    max-height: 180px;
-    padding: 16px;
-
-    opacity: 100;
-}
-
-#cont-cred label {
+#login_cont_cred label {
     margin-top: 16px;
 
     align-self: end;
@@ -141,26 +127,62 @@ h1, p, input {
 
     color: var(--color-blue-light);
 }
-#cont-cred input {
+#login_cont_cred input {
     width: 200px;
     border: none;
     border-bottom: 2px solid var(--color-blue-dark);
 
     font-size: 16px;
 
-    outline: none;
     color: var(--color-blue-light);
-    background-color: var(--color-bg);
-}
-#actions {
-    align-self: start;
+    background-color: transparent;
+    outline: none;
 
-    cursor: default;
+    transition: border-bottom;
+    transition-duration: 1s;
 }
-#cont-cred input[type="button"] {
+#login_cont_cred input[type="button"] {
     width: fit-content;
     border: none;
 
     color: var(--color-red-light);
     cursor: pointer;
+}
+#login_cont_cred input::placeholder {
+    opacity: 1;
+
+    font-size: 11px;
+
+    color: var(--color-blue-light);
+}
+#login_cont_cred input.error {
+    border-bottom: 2px solid red;
+}
+#login_cont_login, #login_cont_register {
+    max-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; /* Handled in JS */
+    opacity: 0;
+
+    transition: max-height, opacity;
+    transition-duration: var(--anim-dur-expand);
+}
+.login_cont_actions {
+    align-self: start;
+
+    cursor: default;
+}
+#login_cont_login.login {
+    max-height: 173px;
+
+    opacity: 100;
+}
+#login_cont_register.register {
+    max-height: 323px;
+
+    opacity: 100;
 }
