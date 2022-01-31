@@ -1,8 +1,7 @@
 #pragma once
 
-#include <LiquidCrystal_I2C.h>
-#include <RotaryEncoder.h>
-
+#include "PlaceLCD.h"
+#include "Rotor.h"
 
 class PlaceState;
 
@@ -10,19 +9,19 @@ class PlaceState;
 class Place {
     
     public:
-    void setState(PlaceState& newState);
+    PlaceState& setState(PlaceState& newState);
     void run();
 
     static Place& getSelf();
-    PlaceState* getState() const;
-    LiquidCrystal_I2C& getLCD() const;
-    RotaryEncoder& getCtrl() const;
-    
+    PlaceLCD& getLCD();
+    Rotor& getRotor();
+
+
     private:
     Place();
 
+    PlaceLCD lcd;
+    Rotor rotor;
+
     PlaceState* currentState;
-    
-    LiquidCrystal_I2C* lcd;
-    RotaryEncoder* ctrl;
 };

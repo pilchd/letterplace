@@ -11,24 +11,24 @@
 #define D10 1 
 
 
-#include <LiquidCrystal_I2C.h>
-#include <RotaryEncoder.h>
-
 #include "Place.h"
 #include "PlaceStates.h"
+#include "tick.h"
 
-using PlaceStates::MainMenu;
+using namespace PlaceStates;
 
 
 Place place = Place::getSelf();
 
 
 void setup() {
-    place.setState(MainMenu::getSelf());
-    place.getLCD().init();
-    place.getLCD().backlight();
+    place.setState(PlaceStates::TextEntry::getSelf());
 }
 
 void loop() {
     place.run();
+
+    place.getRotor().tick();
+    
+    doTick();
 }
